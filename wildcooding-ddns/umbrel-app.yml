@@ -5,7 +5,7 @@ tagline: Replace this tagline with your app's tagline
 icon: 
 category: Development
 version: "1.0.0"
-port: 4000
+port: 4001
 description: >-
   Add your app's description here.
 
