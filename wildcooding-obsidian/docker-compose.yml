@@ -1,6 +1,18 @@
 services:
-    ddns:
-        volumes:
-            - ./config.yml:/ddns/config.yml
-        image: golang:1.23
-        command: bash -c "rm -rf test && git clone https://github.com/derFinlay/cloudflare-ddns-updater test && cd test && go build -o /ddns/ddns ./cmd && /ddns"
+  obsidian:
+    image: lscr.io/linuxserver/obsidian:latest
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - FM_HOME=/config/data
+    volumes:
+      - /var/obsidian:/config
+    ports:
+      - 3000:3000
+    devices:
+      - /dev/dri:/dev/dri #optional
+    shm_size: "1gb"
+    restart: unless-stopped
