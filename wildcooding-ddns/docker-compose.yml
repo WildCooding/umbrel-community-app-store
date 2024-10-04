@@ -1,6 +1,0 @@
-services:
-    ddns:
-        volumes:
-            - ./config.yml:/ddns/config.yml
-        image: golang:1.23
-        command: bash -c "rm -rf test && git clone https://github.com/derFinlay/cloudflare-ddns-updater test && cd test && go build -o /ddns/ddns ./cmd && /ddns"
